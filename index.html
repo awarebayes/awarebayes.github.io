@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Awarebayes's website</title>
+
+    <link rel="stylesheet" href="css/output.css">
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    
+    <link href="/images/favicon.ico" rel="icon" type="image/x-icon">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<head>
+  <body>
+    <main class="min-h-screen font-serif text-2xl md:text-xl">
+        <div class="block lg:hidden bg-cyan-100 p-2" x-data="{ open: false }">
+            <div class="flex flex-row justify-between px-3">
+                <a class="text-blue-500 text-3xl underline font-semibold cursor-pointer" hx-trigger="click" hx-target="#content" hx-get="/html/start.html" hx-swap="innerHTML" @click="open=false">Misha's webpage</a>
+                <button @click="open = !open">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#3b82f6" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
+                        <path d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"></path>
+                        </svg>
+                </button>
+            </div>
+
+            <div x-show="open" class="mt-2" @click.outside="open = false">
+                    <div class="text-2xl mt-2 ml-2 text-red-600 p-1">
+                        <a class="underline cursor-pointer" hx-trigger="click" hx-target="#content" hx-get="/html/about.html" hx-swap="innerHTML" @click="open=false">About me</a>
+                        <br>
+                        <a @click="open=false"  hx-get="/html/about-site.html" class="underline cursor-pointer" hx-trigger="click" hx-target="#content">About this website</a>
+                        <br>
+                        <a href="/other/resume.pdf" class="underline">Resume (PDF)</a>
+                    </div>
+                    <div class="pt-2 pl-2">
+                        <a href="#" class="underline">Articles (WIP)</a>
+                    </div>
+            </div>
+       </div>
+        <div class="grid lg:grid-cols-6 min-h-screen">
+            <div class="lg:col-span-1 hidden lg:flex border-r-black border-r-2 p-2 bg-cyan-100 flex-col justify-between lg:h-screen sticky top-0">
+                <div>
+                    <a class="ml-2 mt-2 text-blue-500 text-3xl underline font-semibold cursor-pointer" hx-trigger="click" hx-target="#content" hx-get="/html/start.html" hx-swap="innerHTML">
+                    Misha's webpage
+                    </a>
+                    <div class="text-lg mt-2 ml-2 text-red-600 p-1">
+                        <a class="underline cursor-pointer" hx-trigger="click" hx-target="#content" hx-get="/html/about.html" hx-swap="innerHTML">About me</a>
+                        <br>
+                        <a hx-get="/html/about-site.html" class="underline cursor-pointer" hx-trigger="click" hx-target="#content">About this website</a>
+                        <br>
+                        <a href="/other/resume.pdf" class="underline">Resume (PDF)</a>
+                    </div>
+                    <div class="pt-5 pl-2">
+                        <a href="#" class="underline">Articles (WIP)</a>
+                    </div>
+                </div>
+            <div class="flex justify-center">
+                <img src="/images/kitty-cat.gif" alt="Kitty staring">
+            </div>
+                <div class="flex items-center justify-evenly">
+                    <a href="http://htmx.org">
+                        <img src="/images/htmx.jpeg" alt="htmx banner" style="max-width: 160px;">
+                    </a>
+                </div>
+            </div>
+            <div class="p-4 lg:col-span-5 bg-gray-100">
+                <div id="content" hx-swap="innerHTML" hx-trigger="load" hx-get="/html/start.html">
+                    I should be swapped on load. If something went wrong, enable javasoy in your browser.
+                </div>
+            </div>
+        </div>
+    </main>
+  </body>
+</html>
